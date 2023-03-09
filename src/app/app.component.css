@@ -1,0 +1,9 @@
+.profile{
+    position:absolute;
+    right:10px;
+}
+@media (max-width:512px) {
+    .profile{
+        top:0;
+    }
+}

@@ -1,0 +1,26 @@
+.form{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap:15px;
+}
+.card{
+    width:40%;
+}
+.card-body{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    line-break: anywhere;
+}
+.templates{
+    display: flex;
+    margin-top:65vh;
+    gap:20px;
+
+}
+.alert-1{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

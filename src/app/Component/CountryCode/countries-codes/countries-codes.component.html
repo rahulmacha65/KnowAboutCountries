@@ -1,0 +1,32 @@
+<div class="spinner" style="z-index:9999" *ngIf="showSpinner">
+    Loading........
+    <div class="spinner-sector spinner-sector-info"></div>
+    <div class="spinner-sector spinner-sector-secondary"></div>
+  </div>
+<div class="container" style="margin-top:5rem">
+    <form class="pb-4">
+        <input type="text" class="form-control" placeholder="Search Country Name" [formControl]="countryName" (keyup)="filterCountryCodes()" />
+    </form>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-header-data" *ngIf="filteredCountryCodes.length>0;else filterData">
+                <button class="btn btn-outline-info text-dark" *ngFor="let code of filteredCountryCodes" [value]="code.name.official" #cn (click)="countrySelected(cn.value)">
+                    Name:{{code.name.common | titlecase}}<br/>Code:{{code.cca2}}
+                </button>
+            </div>
+            <ng-template #filterData>
+                <p>filtered Country details....</p>
+            </ng-template>
+        </div>
+        <div class="card-body">
+            <button *ngFor="let item of countryCodes" class="btn btn-outline-success text-dark" [value]="item.name.official" #ccn (click)="countrySelected(ccn.value)">Name:{{item.name.common | titlecase}}<br/>
+                Code:{{item.cca2}}
+            </button>
+        </div>
+    </div>
+    <div class="alert-1 p-5" *ngIf="showError">
+        <div class="alert alert-danger text-dark h5" role="alert" id="alert-id">
+            Time out error Occurred while getting info from API. Please try after some time!!!
+        </div>
+    </div>
+</div>
