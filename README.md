@@ -1,6 +1,6 @@
 # KnowAboutContries
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+KnowAboutCountries Web Application willl provides the high level information about the countries including countries geo location in the map.
 
 ## Development server
 
