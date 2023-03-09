@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { IcountryDetails } from 'src/app/Model/ICountryDetails';
@@ -9,7 +9,7 @@ import {GetCountryNameService} from 'src/app/Service/get-country-name.service'
   templateUrl: './country-info.component.html',
   styleUrls: ['./country-info.component.css']
 })
-export class CountryInfoComponent implements OnInit {
+export class CountryInfoComponent implements OnInit,OnDestroy {
   showSpinner!:boolean;
   searchInput:FormControl=new FormControl();
   showContent:boolean=false;
@@ -17,7 +17,7 @@ export class CountryInfoComponent implements OnInit {
   constructor(private _getContry:GetCountryNameService) { }
   countryDetails!:Array<IcountryDetails>;
   ngOnInit(): void {
-    if(this._getContry.childData!=undefined){
+    if(this._getContry.childData!=undefined&& this._getContry.childData!=""){
       this.searchInput.patchValue(this._getContry.childData);
       this.getFormattedCountryDetails();
     }
@@ -52,6 +52,8 @@ export class CountryInfoComponent implements OnInit {
       }
     )
   }
-
+  ngOnDestroy(): void {
+    this._getContry.childData="";
+  }
 
 }
