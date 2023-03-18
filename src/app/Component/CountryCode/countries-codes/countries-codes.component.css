@@ -12,4 +12,9 @@
     font-size: small;
     font-weight: bolder;
 }
+@media (max-width:500px){
+    .card{
+        width:min-content;
+    }
+}
 
